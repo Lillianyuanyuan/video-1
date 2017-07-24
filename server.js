@@ -30,7 +30,13 @@ fs.readdir('./control/', (err, files) => {
 });
 e.on('router_end', (message) => {
     console.log(message);
-    // const p = path.resolve('./control/staticControl/static.js');
-    // app.use(require(p));
+    app.use(async(ctx, next) => {
+        if (ctx.request.path === '/') {
+            ctx.redirect('/log');
+        } else {
+            ctx.redirect('/404');
+        }
+        await next();
+    })
     app.listen(8080);
 })
