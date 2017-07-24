@@ -1,5 +1,4 @@
 // created by swnb （小白不黑）
-
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -30,8 +29,7 @@ fs.readdir('./control/', (err, files) => {
 });
 e.on('router_end', (message) => {
     console.log(message);
-    const p = path.resolve('./control/staticControl/staticFile.js');
-    const func = require(p);
-    app.use(func);
+    const p = path.resolve('./control/staticControl/static.js');
+    app.use(require(p));
     app.listen(8080);
 })
