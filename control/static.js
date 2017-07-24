@@ -14,7 +14,6 @@ const func = async(soc, next) => {
         });
     });
     const swi = await promise;
-    console.log(swi);
     if (swi) {
         soc.response.type = mime.lookup(p);
         soc.response.status = 200;
