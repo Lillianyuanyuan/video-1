@@ -1,3 +1,7 @@
+/*
+ * 404路由 
+ */
+
 const path = require('path');
 const fs = require('fs');
 const mime = require('mime');
