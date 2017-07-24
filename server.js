@@ -1,7 +1,6 @@
 // created by swnb （小白不黑）
 const fs = require('fs');
 const path = require('path');
-const util = require('util');
 const evEmit = require('events');
 const e = new evEmit();
 const Koa = require('koa');
@@ -18,6 +17,8 @@ fs.readdir('./control/', (err, files) => {
                 const { pathName, method, func } = require(p);
                 if (method === 'get') {
                     router.get(pathName, func);
+                } else {
+                    router.post(pathName, func);
                 }
             }
         }
@@ -29,7 +30,7 @@ fs.readdir('./control/', (err, files) => {
 });
 e.on('router_end', (message) => {
     console.log(message);
-    const p = path.resolve('./control/staticControl/static.js');
-    app.use(require(p));
+    // const p = path.resolve('./control/staticControl/static.js');
+    // app.use(require(p));
     app.listen(8080);
 })

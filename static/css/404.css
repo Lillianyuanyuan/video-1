@@ -18,6 +18,7 @@
 h1 {
     margin: 55px auto;
     background: linear-gradient(45deg, darkolivegreen 0%, darkgoldenrod 25%, darkturquoise 75%, darkolivegreen 100%);
+    -webkit-background-clip: text;
     background-clip: text;
     background-size: 400% 100%;
     color: transparent;
