@@ -29,5 +29,5 @@ const func = async(soc, next) => {
 module.exports = {
     pathName: '/static/:type/:name',
     method: 'get',
-    func
+    func,
 }
