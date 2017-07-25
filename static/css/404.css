@@ -20,9 +20,11 @@ h1 {
     background: linear-gradient(45deg, darkolivegreen 0%, darkgoldenrod 25%, darkturquoise 75%, darkolivegreen 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    background-size: 400% 100%;
+    background-size: 10% 100%;
+    background-repeat: repeat-x;
     color: transparent;
     text-align: center;
     font-size: 10em;
-    animation: move 3s linear infinite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: move 10s linear infinite;
 }
