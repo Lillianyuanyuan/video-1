@@ -8,10 +8,9 @@ const mime = require('mime');
 const func = async(soc, next) => {
     soc.response.status = 200;
     let p = path.join(__dirname, '../', 'views/404.html');
-    soc.response.type = mime.lookup(p);
+    soc.response.type = 'text/html;charset=utf-8';
     console.log(p, ': nofound.js 7');
     soc.response.body = fs.createReadStream(p, 'utf-8');
-    return
 }
 
 module.exports = {
