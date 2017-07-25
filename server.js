@@ -32,7 +32,7 @@ e.on('router_end', (message) => {
     console.log(message);
     app.use(async(ctx, next) => {
         if (ctx.request.path === '/') {
-            ctx.redirect('/log');
+            ctx.redirect('/sign.swnb');
         } else {
             ctx.redirect('/404');
         }
