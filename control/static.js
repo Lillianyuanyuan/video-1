@@ -10,18 +10,22 @@ const func = async(soc, next) => {
     //安全处理路径
     p = path.normalize(p);
     p = path.join(__dirname, '../', p);
-    console.log(p, ': static.js 8');
     //回调用promise来写
     const promise = new Promise((resolve) => {
-        fs.exists(p, (bool) => {
-            resolve(bool);
+        fs.stat(p, (err, stats) => {
+            if (!err && stats.isFile()) {
+                resolve(true);
+                console.log(p, ': static.js 18');
+            } else {
+                resolve(false);
+            }
         });
     });
     const swi = await promise;
     if (swi) {
         soc.response.type = mime.lookup(p);
         soc.response.status = 200;
-        soc.response.body = fs.readFileSync(p, 'utf-8');
+        soc.response.body = fs.createReadStream(p, 'utf-8');
     } else {
         soc.redirect('/404');
     }
