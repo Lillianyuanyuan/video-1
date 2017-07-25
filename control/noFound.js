@@ -9,7 +9,7 @@ const func = async(soc, next) => {
     soc.response.status = 200;
     let p = path.join(__dirname, '../', 'views/404.html');
     soc.response.type = 'text/html;charset=utf-8';
-    console.log(p, ': nofound.js 7');
+    console.log(p, ': nofound.js 12');
     soc.response.body = fs.createReadStream(p, 'utf-8');
 }
 
