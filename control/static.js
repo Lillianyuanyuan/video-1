@@ -57,19 +57,17 @@ const func = async(ctx, next) => {
                 'last-modified': flag
             })
             if (contentEncoding === 'gzip') {
-                ctx.set({
-                    'Last-Modified': flag,
-                    'content-type': contentType,
-                    'content-encoding': contentEncoding,
-                });
+                ctx.set('content-encoding', contentEncoding);
                 ctx.response.body = fs.createReadStream(p, 'utf-8').pipe(zlib.createGzip());
             } else if (contentEncoding === 'deflate') {
                 ctx.set('content-encoding', contentEncoding);
                 ctx.response.body = fs.createReadStream(p, 'utf-8').pipe(zlib.createDeflate());
-            } else {}
+            } else {
+
+            }
         }
     } else {
-        ctx.redirect('/404');
+        ctx.status = 404;
     }
 }
 
