@@ -1,9 +1,4 @@
 module.exports = {
-    index: {
-        html: 'index.html',
-        css: 'index.css',
-        js: 'index.js',
-        mp4: 'index.mp4',
-    },
+    ETag: 1,
     port: 8080,
 }
