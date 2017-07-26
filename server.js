@@ -15,18 +15,13 @@ const main = async() => {
                         const p = path.resolve('./control', file);
                         console.log('router:', file);
                         const { pathName, method, func } = require(p);
-                        if (method === 'get') {
-                            router.get(pathName, func);
-                        } else if (method === 'post') {
-                            router.post(pathName, func);
-                        } else {
-                            console.log('something wrong about router');
-                        }
+                        //注册路由
+                        (method === 'post' || method === 'get') ? ((method === 'get') ? router.get(pathName, func) : router.post(pathName, func)) : console.log('something wrong about router');
                     }
                 }
                 //注册路由
                 app.use(router.routes());
-                resolve('router register');
+                resolve('router register finish');
             } else {
                 console.log(err);
             }
