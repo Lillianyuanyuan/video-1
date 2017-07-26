@@ -29,6 +29,7 @@ const main = async() => {
     });
 
     const swi = await router_flag;
+    const { port } = require('./config');
     console.log(swi);
     //路由注册完成后
     if (swi) {
@@ -40,7 +41,6 @@ const main = async() => {
             }
             await next();
         });
-        const { port } = require('./config');
         app.listen(port);
     }
 };
