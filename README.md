@@ -33,9 +33,9 @@
 
             sudo apt-get install nodejs
         
-        之后安装，后面就以ubuntu环境为例子，centos用户改成yum就好了
+        之后安装npm，后面就以ubuntu环境为例子，centos用户改成yum就好了
         
-            sudo apt-get install npm 
+            `sudo apt-get install npm` 
     
         因为npm在国内使用很慢，建议使用cnpm，如果不想安装cnpm，可以跳过，跳过这一步的情况下，那么后面的cnpm就换成npm就好了，shell输入
 
