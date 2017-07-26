@@ -1,4 +1,4 @@
 module.exports = {
-    ETag: 1,
+    ETag: undefined,
     port: 8080,
 }
