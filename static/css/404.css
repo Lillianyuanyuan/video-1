@@ -24,7 +24,7 @@ h1 {
     background-repeat: repeat-x;
     color: transparent;
     text-align: center;
-    font-size: 10em;
+    font-size: 10rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     animation: move 10s linear infinite;
 }
