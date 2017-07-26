@@ -5,7 +5,6 @@ const path = require('path');
 const fs = require('fs');
 const mime = require('mime');
 const { ETag } = require('../config');
-const { inspect } = require('util');
 const zlib = require('zlib');
 //test
 
@@ -63,7 +62,7 @@ const func = async(ctx, next) => {
                 ctx.set('content-encoding', contentEncoding);
                 ctx.response.body = fs.createReadStream(p, 'utf-8').pipe(zlib.createDeflate());
             } else {
-
+                ctx.response.body = fs.createReadStream(p, 'utf-8');
             }
         }
     } else {
