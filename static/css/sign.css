@@ -3,12 +3,15 @@
     padding: 0;
 }
 
+body {
+    position: relative;
+}
+
 .container {
-    margin: 6% auto;
+    margin: 13% auto 3%;
     padding: 0.1rem;
     width: 3.5rem;
     height: 50%;
-    border: 1px solid cornflowerblue;
     border-radius: 0.2rem;
     box-shadow: 0 0 .1rem 1px cornflowerblue;
     font-size: 0.5rem;
@@ -19,12 +22,53 @@
     margin: 0.1rem auto;
     width: 60%;
     height: 10%;
+    outline: none;
+    border: none;
     text-align: center;
+    text-decoration: none;
     font-size: 0.3rem;
 }
 
+.container>input:focus {
+    color: #4BEDF1;
+}
+
+.container>input:focus+.add {
+    width: 60%;
+}
+
+.add {
+    display: block;
+    margin: auto;
+    width: 0;
+    height: 4px;
+    background-color: #4BB9F1;
+    transition: all 1s linear;
+}
+
 .welcome {
+    width: 100%;
+    background: linear-gradient(45deg, darkolivegreen 0%, darkgoldenrod 25%, darkturquoise 75%, darkolivegreen 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 20% 100%;
+    background-repeat: repeat-x;
+    color: transparent;
     text-align: center;
+    font-size: 0.5rem;
+    animation: backgroundmove 10s linear infinite;
+}
+
+@keyframes backgroundmove {
+    0% {
+        background-position-x: 0%;
+    }
+    50% {
+        background-position-x: 100%;
+    }
+    100% {
+        background-position-x: 0%;
+    }
 }
 
 @keyframes rotate {
@@ -38,14 +82,19 @@
 
 #button {
     position: absolute;
-    bottom: 10%;
-    left: 7rem;
+    top: 2rem;
+    left: 8rem;
+    z-index: 2;
     width: 1rem;
     height: 1rem;
-    border: 0.1rem dashed blue;
+    border: 6px dashed #4BEDF1;
     border-radius: 50%;
 }
 
 .buttonro {
-    animation: rotate 2s linear infinite;
+    animation: rotate 3s linear infinite;
+}
+
+.buttonro:hover {
+    animation: rotate 1.5s linear infinite;
 }
