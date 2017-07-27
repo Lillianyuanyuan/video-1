@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const Koa = require('koa');
-const bodyparser = require('koa-bodyparser')();
+const koabody = require('koa-body')();
 const router = require('koa-router')();
 const app = new Koa();
 app.use(bodyparser);
@@ -16,7 +16,7 @@ const main = async() => {
                         console.log('router:', file);
                         const { pathName, method, func } = require(p);
                         //注册路由
-                        (method === 'post' || method === 'get') ? ((method === 'get') ? router.get(pathName, func) : router.post(pathName, func)) : console.log('something wrong about router');
+                        (method === 'post' || method === 'get') ? ((method === 'get') ? router.get(pathName, func) : router.post(pathName, koabody, func)) : console.log('something wrong about router');
                     }
                 }
                 //注册路由
@@ -44,4 +44,5 @@ const main = async() => {
         app.listen(port);
     }
 };
+
 main();

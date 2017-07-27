@@ -20,7 +20,7 @@ function encoding(code) {
     }
 }
 
-const func = async(ctx, next) => {
+const func = async(ctx) => {
     let p = ctx.request.path;
     //安全处理路径
     p = path.normalize(p);

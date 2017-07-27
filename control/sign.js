@@ -3,7 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const func = async(ctx, next) => {
+const func = async(ctx) => {
     const log = () => {
         ctx.status = 200;
         ctx.type = 'text/html;charset=utf-8';

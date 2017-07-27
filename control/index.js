@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const func = async(ctx, next) => {
+const func = async(ctx) => {
     ctx.status = 200;
     ctx.type = 'text/html;charset=utf-8';
     const p = path.join(__dirname, '..', '/views/index.html')

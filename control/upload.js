@@ -3,7 +3,7 @@
  */
 const path = require('path');
 const fs = require('fs');
-const func = async(ctx, next) => {
+const func = async(ctx) => {
     let userName = '';
     ctx.cookies.get('username') ? (userName = ctx.cookies.get('username')) : (ctx.redirect('/sign.swnb'));
     ctx.status = 200;
