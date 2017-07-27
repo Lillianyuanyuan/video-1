@@ -34,7 +34,7 @@ body {
 }
 
 .container>input:focus+.add {
-    width: 60%;
+    width: 80%;
 }
 
 .add {
