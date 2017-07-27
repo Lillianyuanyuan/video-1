@@ -1,6 +1,5 @@
    (() => {
        let ca = document.querySelector('canvas');
-       let html = document.getElementsByTagName('html');
        let range = 60;
        if (parseInt(window.innerWidth) < 750) {
            range = 20;
@@ -77,7 +76,6 @@
            for (let i of poinlist) {
                i.draw();
            }
-           console.log(poinlist.length);
            requestAnimationFrame(move);
        }
        move();
