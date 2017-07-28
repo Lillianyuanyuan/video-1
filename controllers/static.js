@@ -44,7 +44,7 @@ const func = async(ctx) => {
     if (flag) {
         if (ctx.headers['if-modified-since'] && ctx.headers['if-modified-since'] === flag) {
             ctx.status = 304;
-            console.log(ctx.headers['if-modified-since'], 'static.js 52');
+            console.log('if-modified-since', ctx.headers['if-modified-since'], 'static.js 47');
         } else {
             //设置压缩
             const contentType = mime.lookup(p);

@@ -1,12 +1,15 @@
 /*
  *   cookie 路由
  */
-
+const path = require('path');
 const func = async(ctx) => {
     const name = ctx.request.body.fields.username;
-    console.log(name, ': signIn.js 7');
+    console.log(name, 'signin : signIn.js 7');
+    const config = path.join(__dirname, '..', 'config.js');
+    let expires = require(config).cookies_expires;
+    expires = new Date(Date.now() + expires);
     ctx.cookies.set('username', name, {
-        expires: new Date(Date.now() + 12000).toUTCString(),
+        expires,
     });
     ctx.redirect('/index.swnb');
 }

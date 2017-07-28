@@ -21,9 +21,9 @@
                 const formdata = new FormData();
                 formdata.append('username', input.value);
                 let xhr = new XMLHttpRequest();
-                xhr.open('post', '/signin.swnb', true)
-                xhr.onload = (res) => {
-                    console.log(res);
+                xhr.open('post', '/signin.swnb', true);
+                xhr.onload = () => {
+                    window.location.href = xhr.responseURL;
                 }
                 xhr.send(formdata);
                 // fetch('/signin.swnb', {

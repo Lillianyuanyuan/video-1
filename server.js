@@ -5,13 +5,14 @@ const Koa = require('koa');
 const koabody = require('koa-body')({ multipart: true });
 const router = require('koa-router')();
 const app = new Koa();
-const main = async() => {
-    const router_flag = new Promise((resolve) => {
-        fs.readdir('./control/', (err, files) => {
+
+function main() {
+    const routerRigister = new Promise((resolve) => {
+        fs.readdir('./controllers/', (err, files) => {
             if (!err) {
                 for (file of files) {
                     if (file.endsWith('.js')) {
-                        const p = path.resolve('./control', file);
+                        const p = path.join(__dirname, 'controllers', file);
                         console.log('router:', file);
                         const { pathName, method, func } = require(p);
                         //注册路由
@@ -27,11 +28,10 @@ const main = async() => {
         });
     });
 
-    const swi = await router_flag;
     const { port } = require('./config');
-    console.log(swi);
     //路由注册完成后
-    if (swi) {
+    routerRigister.then((message) => {
+        console.log(message);
         app.use(async(ctx, next) => {
             if (ctx.request.path === '/') {
                 ctx.redirect('/sign.swnb');
@@ -41,7 +41,7 @@ const main = async() => {
             await next();
         });
         app.listen(port);
-    }
+    })
 };
 
 main();
