@@ -2,10 +2,9 @@
 const fs = require('fs');
 const path = require('path');
 const Koa = require('koa');
-const koabody = require('koa-body')();
+const koabody = require('koa-body')({ multipart: true });
 const router = require('koa-router')();
 const app = new Koa();
-app.use(bodyparser);
 const main = async() => {
     const router_flag = new Promise((resolve) => {
         fs.readdir('./control/', (err, files) => {
