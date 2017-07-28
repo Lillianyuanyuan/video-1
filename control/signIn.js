@@ -3,12 +3,10 @@
  */
 
 const func = async(ctx) => {
-    console.log(ctx.body);
-    console.log(ctx.request.body);
-    const name = ctx.body;
+    const name = ctx.request.body.fields.username;
     console.log(name, ': signIn.js 7');
     ctx.cookies.set('username', name, {
-        expires: new Date(Date.now() + 12000)
+        expires: new Date(Date.now() + 12000).toUTCString(),
     });
     ctx.redirect('/index.swnb');
 }
