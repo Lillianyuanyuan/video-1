@@ -7,7 +7,7 @@ const func = async(ctx) => {
     ctx.body = fs.createReadStream(p, 'utf-8');
 }
 module.exports = {
-    pathName: 'index.swnb',
+    pathName: '/index.swnb',
     method: 'get',
     func,
 }
