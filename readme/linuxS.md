@@ -3,6 +3,7 @@
     sudo apt-get install nodejs
 
 [安装yarn](https://yarnpkg.com/en/docs/install)
+> 也可以使用npm,但是比较慢
 
 yarn 安装 n 来更新node版本
 
