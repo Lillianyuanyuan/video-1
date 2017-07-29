@@ -23,35 +23,13 @@
 
 * linux用户
     
-    首先安装环境node和npm，如果安装过并且node环境已经是最新的，就可以跳过
+
+    如果没有linux使用经验,建议仔细阅读[小白安装指导](./readme/linux.md)来配置环境,如果是linux熟练使用者,请直接阅读[简略安装指导](./readme/linuxS).
     
-        如果是centos(redhat)系统，在shell输入
+    因为[linux小白安装指导](./readme/linux.md)写的非常详细.所以如果运行失败,建议仔细阅读小白的安装指导
 
-            sudo yum install nodejs 
+    [linux小白安装指导](./readme/linux.md)
 
-        如果是debain、ubuntu、kali 系统，在shell输入
-
-            sudo apt-get install nodejs
-        
-        之后安装npm，后面就以ubuntu环境为例子，centos用户改成yum就好了
-        
-            sudo apt-get install npm 
-    
-        因为npm在国内使用很慢，建议使用cnpm，如果不想安装cnpm，可以跳过，跳过这一步的情况下，那么后面的cnpm就换成npm就好了，shell输入
-
-            sudo npm i -g cnpm 
-
-        我们下载n来更新node环境，后面的命令不区分linux的系统
-        
-            sudo cnpm i -g n
-         
-        更新node
-
-            sudo n stable
-        
-        查看node环境，我测试的时候是v8.0.0,环境版本应该大于这个环境，查看环境版本
-
-            node -v 
-
+    [linux简单安装指导](./readme/linuxS)
         
 # 项目正在开发中
