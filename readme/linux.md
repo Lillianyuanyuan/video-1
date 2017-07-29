@@ -1,8 +1,8 @@
-首先安装环境node和yarn,如果安装过并且node环境已经是最新的,就可以跳过,(由于操作系统版本环境的不同,不便赘述,所以这里先安装npm,再通过npm安装yarn,)
+首先安装node和yarn,如果已安装过并且node环境最新的,就可以跳过,(由于操作系统版本和环境的差异,不便一一赘述,所以这里统一先安装npm,再通过npm安装yarn,)
 
-如果是树莓派用户,先通过ssh连接到你的树莓派的shell
+如果是树莓派用户,先通过ssh连接树莓派的shell
 
-安装node:后面就以 debain、ubuntu、kali 等系统环境为例子,如果是centos(redHat)系统,把apt-get改成yum就好了
+安装node:后面以 debain、ubuntu、kali 等系统为例子,如果是centos(redHat)系统,把apt-get改成yum就好了
 
     sudo apt-get install nodejs
 
@@ -10,21 +10,21 @@
 
     sudo apt-get install npm 
 
-安装yarn:因为国内使用npm比较慢，所以使用yarn，如果不想安装yarn,可以使用npm自行安装,记得更新要node版本
+安装yarn:因为国内使用npm比较慢，所以使用yarn
 
     sudo npm i -g yarn 
 
-yarn安装n:更新node环境
+yarn安装n:
 
     sudo yarn global add n
 
-更新node
+更新node:
 
     sudo n stable
 
-查看node环境，我测试的时候是v8.0.0,环境版本应该大于这个环境，查看环境版本
+查看node版本号，我测试的时候是v8.0.0,输出大于它,上面的步骤就应该没错了:
 
-    node -v 
+    node -v
 
 更改权限:在linux系统下,由于权限问题,建议把文件所有者改成你的用户名,并且给予文件执行权利
 
