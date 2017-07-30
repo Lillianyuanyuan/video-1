@@ -1,4 +1,4 @@
-首先环境需要`node v8.0.0` 以上的环境,后面以ubuntu为例,centos改成yum就好了
+首先需要`node v8.0.0` 以上的node环境,后面以ubuntu为例,centos改成yum就好了
 
     sudo apt-get install nodejs
 
