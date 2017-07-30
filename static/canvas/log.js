@@ -1,39 +1,37 @@
    (() => {
        let ca = document.querySelector('canvas');
-       let range = 60;
+       let con = ca.getContext('2d');
+       let poinlist = [];
+       let number = 60;
        if (parseInt(window.innerWidth) < 750) {
-           range = 20;
+           number = 20;
        }
        ca.style.position = 'absolute';
-       ca.style.top = '-1rem';
-       ca.style.left = '20px';
+       ca.style.top = '0';
+       ca.style.left = '0';
        ca.style.zIndex = '-1';
-       let w = ca.width = document.body.clientWidth - 40;
-       let h = ca.height = window.innerHeight - 120;
-       let poinlist = [];
-       let con = ca.getContext('2d');
+       let [w, h] = [ca.width, ca.height] = [window.innerWidth, window.innerHeight];
        window.onresize = function() {
            if (parseInt(window.innerWidth) < 750) {
-               range = 20;
+               number = 20;
                poinlist = [];
-               for (let i = 0; i < range; i++) {
+               for (let i = 0; i < number; i++) {
                    let tmp = new poin();
                    tmp.init();
                    poinlist.push(tmp);
                }
            }
-           w = ca.width = document.body.clientWidth - 40;
-           h = ca.height = window.innerHeight;
+           [w, h] = [ca.width, ca.height] = [window.innerWidth, window.innerHeight];
        };
 
        function random(min, max, swift) {
-           let e = Math.random() * (max - min) + min;
+           let num = Math.random() * (max - min) + min;
            if (swift === 1) {
-               return Math.floor(e);
-           } else return e;
+               return Math.floor(num);
+           } else return num;
        }
 
-       function poin() {}
+       function poin() {};
        poin.prototype = {
            init: function() {
                this.x = random(20, w - 10);
@@ -64,7 +62,7 @@
        //    observer.init();
        //    setInterval(function(){observer.draw()},1000/60);
        //    setInterval(()=>{console.log(observer.vx,observer.vy)},1000);
-       for (let i = 0; i < range; i++) {
+       for (let i = 0; i < number; i++) {
            let tmp = new poin();
            tmp.init();
            poinlist.push(tmp);
