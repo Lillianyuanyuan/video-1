@@ -5,13 +5,13 @@
 
 @keyframes rotate {
     0% {
-        transform: rotateX(13deg);
+        transform: rotateY(17deg);
     }
     50% {
-        transform: rotateX(-13deg);
+        transform: rotateY(-17deg);
     }
     100% {
-        transform: rotateX(13deg);
+        transform: rotateY(17deg);
     }
 }
 
@@ -28,22 +28,21 @@
 }
 
 body {
+    display: flex;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
     perspective: 2000px;
 }
 
-div {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+article {
     animation: rotate 3s linear infinite;
 
     transform-style: preserve-3d;
 }
 
 h1 {
-    margin: 1rem auto;
     background: linear-gradient(45deg, darkolivegreen 0%, darkgoldenrod 25%, darkturquoise 75%, darkolivegreen 100%);
     -webkit-background-clip: text;
     background-clip: text;

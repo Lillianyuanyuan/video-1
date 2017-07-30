@@ -6,5 +6,6 @@
         html.style.fontSize = width / 10 + 'px';
     })
     html.style.fontSize = width / 10 + 'px';
+    //不允许托选
     document.onselectstart = () => false;
 })()
