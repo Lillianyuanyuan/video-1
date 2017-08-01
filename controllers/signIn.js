@@ -11,7 +11,8 @@ const func = async(ctx) => {
     ctx.cookies.set('username', name, {
         expires,
     });
-    ctx.redirect('/index.swnb');
+    ctx.status = 301;
+    ctx.set({ 'Location': '/index.swnb' });
 }
 module.exports = {
     pathName: '/signin.swnb',
