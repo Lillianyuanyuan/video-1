@@ -1,53 +1,64 @@
 * {
     margin: 0;
     padding: 0;
+    transition: all 1s linear;
 }
 
 body {
     position: relative;
 }
 
-.container {
-    margin: 13% auto 3%;
-    padding: 0.1rem;
-    width: 3.5rem;
-    height: 50%;
-    border-radius: 0.2rem;
-    box-shadow: 0 0 .1rem 1px cornflowerblue;
-    font-size: 0.5rem;
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.container>input {
-    display: block;
-    margin: 0.1rem auto;
-    width: 60%;
-    height: 10%;
+section>div {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    flex-direction: column;
+    width: 45vw;
+    height: 10vw;
+    border: 3px solid #abd1ff;
+    border-radius: 2vw;
+    box-shadow: 0 0 10px 1px #56a1ff;
+}
+
+.box>.input-fade {
+    width: 70%;
     outline: none;
     border: none;
     text-align: center;
     text-decoration: none;
-    font-size: 0.3rem;
+    font-size: 5vw;
 }
 
-.container>input:focus {
+.input-fade:focus {
     color: #4BEDF1;
 }
 
-.container>input:focus+.add {
-    width: 80%;
+.add-bar {
+    width: 0;
+    height: 3px;
+    background-color: #56a1ff;
 }
 
-.add {
-    display: block;
-    margin: auto;
-    width: 0;
-    height: 4px;
-    background-color: #4BB9F1;
-    transition: all 1s linear;
+.input-fade:focus+.add-bar {
+    width: 70%;
 }
 
 .welcome {
-    width: 100%;
     background: linear-gradient(45deg, darkolivegreen 0%, darkgoldenrod 25%, darkturquoise 75%, darkolivegreen 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -55,7 +66,7 @@ body {
     background-repeat: repeat-x;
     color: transparent;
     text-align: center;
-    font-size: 0.5rem;
+    font-size: 10vw;
     animation: backgroundmove 10s linear infinite;
 }
 
@@ -80,21 +91,33 @@ body {
     }
 }
 
-#button {
+.button {
     position: absolute;
-    top: 2rem;
-    left: 8rem;
+    top: 47vh;
+    right: 3vw;
     z-index: 2;
-    width: 1rem;
-    height: 1rem;
+    display: flex;
+    width: 17vw;
+    height: 17vw;
     border: 6px dashed #4BEDF1;
     border-radius: 50%;
+
+    justify-content: center;
+    align-items: center;
 }
 
-.buttonro {
+.button {
     animation: rotate 3s linear infinite;
 }
 
-.buttonro:hover {
+.button:hover {
     animation: rotate 1.5s linear infinite;
+}
+
+.buttonin {
+    width: 12vw;
+    height: 12vw;
+    border: 3px dashed #4BEDF1;
+    border-radius: 50%;
+    animation: rotate 1.2s linear infinte;
 }
