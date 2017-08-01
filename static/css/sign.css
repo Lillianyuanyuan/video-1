@@ -19,20 +19,17 @@ section {
     flex-wrap: wrap;
 }
 
-section>div {
-    display: flex;
-
-    justify-content: center;
-    align-items: center;
-}
-
 .box {
+    display: flex;
     flex-direction: column;
     width: 45vw;
     height: 10vw;
     border: 3px solid #abd1ff;
     border-radius: 2vw;
     box-shadow: 0 0 10px 1px #56a1ff;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .box>.input-fade {
@@ -94,7 +91,7 @@ section>div {
 .button {
     position: absolute;
     top: 47vh;
-    right: 3vw;
+    right: 4vw;
     z-index: 2;
     display: flex;
     width: 17vw;
