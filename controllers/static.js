@@ -6,8 +6,8 @@ const fs = require('fs');
 const mime = require('mime');
 const { ETag } = require('../config');
 const zlib = require('zlib');
-//test
 
+//确认压缩方式
 function encoding(code) {
     if (/\bgzip\b/.test(code)) {
         console.log('gzip :static.js 14');
@@ -27,12 +27,11 @@ const func = async(ctx) => {
     p = path.join(__dirname, '../', p);
     //回调用promise来写
     const promise = new Promise((resolve) => {
-        let lastModified = '';
         fs.stat(p, (err, stats) => {
             if (!err && stats.isFile()) {
                 console.log(p, ': static.js 37');
                 //获取更改时间
-                lastModified = stats.mtime.toUTCString();
+                const lastModified = stats.mtime.toUTCString();
                 resolve(lastModified);
             } else {
                 if (err) console.log(err);
@@ -40,6 +39,7 @@ const func = async(ctx) => {
             }
         });
     });
+
     const flag = await promise;
     if (flag) {
         if (ctx.headers['if-modified-since'] && ctx.headers['if-modified-since'] === flag) {
@@ -73,6 +73,5 @@ const func = async(ctx) => {
 
 module.exports = {
     pathName: '/static/:type/:name',
-    method: 'get',
-    func,
+    get: func,
 }

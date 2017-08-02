@@ -19,7 +19,7 @@
                 //     window.location.reload();
                 // };
                 // xhr.send(formdata);
-                fetch('/signin.swnb', {
+                fetch('/sign.swnb', {
                     method: 'post',
                     body: formdata,
                     credentials: 'same-origin',

@@ -1,3 +1,6 @@
+/*
+ * 测试路由
+ */
 const fs = require('fs');
 const path = require('path');
 const func = async(ctx) => {
@@ -9,6 +12,5 @@ const func = async(ctx) => {
 }
 module.exports = {
     pathName: '/test',
-    method: 'get',
-    func,
+    get: func,
 }

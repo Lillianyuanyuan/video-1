@@ -13,6 +13,5 @@ const func = async(ctx) => {
 };
 module.exports = {
     pathName: '/upload',
-    method: 'get',
-    func,
+    get: func,
 }

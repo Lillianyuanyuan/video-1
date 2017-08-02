@@ -14,6 +14,5 @@ const func = async(ctx) => {
 }
 module.exports = {
     pathName: '/index.swnb',
-    method: 'get',
-    func,
+    get: func,
 }

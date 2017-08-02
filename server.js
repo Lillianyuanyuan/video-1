@@ -14,9 +14,10 @@ function main() {
                     if (file.endsWith('.js')) {
                         const p = path.join(__dirname, 'controllers', file);
                         console.log('router:', file);
-                        const { pathName, method, func } = require(p);
+                        const { pathName, get, post } = require(p);
                         //注册路由
-                        (method === 'post' || method === 'get') ? ((method === 'get') ? router.get(pathName, func) : router.post(pathName, koabody, func)) : console.log('something wrong about router');
+                        post ? router.post(pathName, koabody, post) : void(0);
+                        get ? router.get(pathName, get) : void(0);
                     }
                 }
                 //注册路由

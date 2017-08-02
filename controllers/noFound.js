@@ -15,6 +15,5 @@ const func = async(soc, next) => {
 
 module.exports = {
     pathName: '/404',
-    method: 'get',
-    func,
+    get: func,
 }
