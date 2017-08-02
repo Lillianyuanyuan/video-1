@@ -6,12 +6,8 @@
        if (parseInt(window.innerWidth) < 750) {
            number = 20;
        }
-       ca.style.position = 'absolute';
-       ca.style.top = '0';
-       ca.style.left = '0';
-       ca.style.zIndex = '-1';
        let [w, h] = [ca.width, ca.height] = [window.innerWidth, window.innerHeight];
-       window.onresize = function() {
+       window.addEventListener('resize', () => {
            if (parseInt(window.innerWidth) < 750) {
                number = 20;
                poinlist = [];
@@ -22,7 +18,7 @@
                }
            }
            [w, h] = [ca.width, ca.height] = [window.innerWidth, window.innerHeight];
-       };
+       });
 
        function random(min, max, swift) {
            let num = Math.random() * (max - min) + min;
@@ -47,6 +43,7 @@
                con.fillStyle = this.color;
                con.arc(this.x, this.y, this.r, 0, Math.PI * 2);
                con.fill();
+               con.closePath();
                this.update();
            },
            update: function() {
@@ -58,10 +55,6 @@
                }
            }
        };
-       //    let observer=new poin();
-       //    observer.init();
-       //    setInterval(function(){observer.draw()},1000/60);
-       //    setInterval(()=>{console.log(observer.vx,observer.vy)},1000);
        for (let i = 0; i < number; i++) {
            let tmp = new poin();
            tmp.init();
