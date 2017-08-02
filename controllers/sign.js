@@ -13,8 +13,23 @@ const func = async(ctx) => {
     }
     ctx.cookies.get('username') ? (ctx.redirect('/index.swnb')) : log();
 }
+
+const func_post = async(ctx) => {
+    const name = ctx.request.body.fields.username;
+    console.log(name, 'sign : sign.js 18');
+    const config = path.join(__dirname, '..', 'config.js');
+    let expires = require(config).cookies_expires;
+    expires = new Date(Date.now() + expires);
+    ctx.cookies.set('username', name, {
+        expires,
+    });
+    ctx.redirect('/index.swnb');
+    // ctx.status = 301;
+    // ctx.set({ 'Location': '/index.swnb' });
+}
+
 module.exports = {
     pathName: '/sign.swnb',
-    method: 'get',
-    func,
+    get: func,
+    post: func_post,
 }
