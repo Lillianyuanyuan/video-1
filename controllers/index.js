@@ -8,6 +8,7 @@ const func = async(ctx) => {
         const p = path.join(__dirname, '..', '/views/index.html')
         ctx.body = fs.createReadStream(p, 'utf-8');
     } else {
+        console.log('no cookies match username index.js 11');
         ctx.redirect('/sign.swnb');
     }
 }
