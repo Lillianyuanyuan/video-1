@@ -14,6 +14,13 @@
         position.x = e.clientX;
         position.y = e.clientY;
     });
+    document.addEventListener('touchmove', (e = window.event) => {
+        [position.x, position.y] = [e.touches[0].clientX, e.touches[0].clientY];
+    });
+
+    can.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+    });
 
     //线条相连接
     function line(This) {
