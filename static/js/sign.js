@@ -13,12 +13,17 @@
             } else {
                 const formdata = new FormData();
                 formdata.append('username', input.value);
+                // let xhr = new XMLHttpRequest();
+                // xhr.open('POST', '/signin.swnb', true);
+                // xhr.onload = () => {
+                //     window.location.reload();
+                // };
+                // xhr.send(formdata);
                 fetch('/signin.swnb', {
-                    method: 'POST',
+                    method: 'post',
                     body: formdata,
-                }).then((res) => {
-                    console.log(res);
-                });
+                    credentials: 'same-origin',
+                }).then(() => { window.location.reload() })
             }
         } else {
             alert('请输入你的名字作为你的标识');
