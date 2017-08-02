@@ -118,3 +118,16 @@ section {
     border-radius: 50%;
     animation: rotate 1.2s linear infinte;
 }
+
+@media screen and (min-width:1025px) {
+    .box {
+        width: 35vw;
+        height: 7vw;
+    }
+    .box>.input-fade {
+        font-size: 3vw;
+    }
+    .welcome {
+        font-size: 7vw;
+    }
+}
