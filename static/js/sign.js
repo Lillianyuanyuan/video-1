@@ -13,12 +13,6 @@
             } else {
                 const formdata = new FormData();
                 formdata.append('username', input.value);
-                // let xhr = new XMLHttpRequest();
-                // xhr.open('POST', '/signin.swnb', true);
-                // xhr.onload = () => {
-                //     window.location.reload();
-                // };
-                // xhr.send(formdata);
                 fetch('/sign.swnb', {
                     method: 'post',
                     body: formdata,
