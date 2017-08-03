@@ -50,7 +50,7 @@ h1 {
     background-repeat: repeat-x;
     color: transparent;
     text-align: center;
-    font-size: 1rem;
+    font-size: 10vw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     animation: backgroundmove 10s linear infinite;
 }
