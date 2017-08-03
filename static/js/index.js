@@ -51,4 +51,8 @@ if (parseInt(window.innerWidth) > 360) {
     let sc = document.createElement('script');
     sc.src = '/static/canvas/index.js';
     document.body.appendChild(sc);
+} {
+    let b = document.body;
+    b.style.minHeight = '100vh';
+    b.style.backgroundColor = 'black';
 }
