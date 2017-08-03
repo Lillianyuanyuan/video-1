@@ -47,3 +47,8 @@
     };
     render();
 })();
+if (parseInt(window.innerWidth) > 360) {
+    let sc = document.createElement('script');
+    sc.src = '/static/canvas/index.js';
+    document.body.appendChild(sc);
+}
