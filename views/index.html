@@ -30,42 +30,37 @@
                 <li>github</li>
                 <li>others</li>
                 <li>
-                    <svg width="100%" height="12vh" preserveAspectRatio="none" viewBox='0,0,100,100'>
+                    <svg width="100%" height="100%" preserveAspectRatio="none" viewBox='0,0,100,100'>
                         <path d="M4,0 Q0,30 4,60 Q20,100 20,60 T40,60 T60,60 T80,60 T96,60 Q100,30 96,0" fill='rgba(255,200,2,0.7)'  fill-width="5"/>
                     </svg>
                 </li>
             </ul>
         </nav>
     </header>
+    <section class='container'>
+        <svg width='100%' height='100%' preserveAspectRatio="none" viewBox='0,0,100,100'>
+            <path d='M0,0 Q50,10 100,0Q90,50 100,100Q50,90 0,100Q 10,50 0,0' fill='rgba(255,255,255,0.4)'/>
+        </svg>
+        <div class='store'>
+            <div class='page'>
+                <a href="#">上传文件</a>
+            </div>
+            <div class="page"><a href="#">看电影</a></div>
+            <div class="page"><a href="#">听音乐</a></div>
+            <div class="page"><a href="#">聊天</a></div>
+        </div>
+    </section>
     <canvas id='canvas'></canvas>
     <script src='static/js/index.js'></script>
+    <script>
+        // let button = document.querySelector('');
+        // stage.onclick = function() {
+        //     this.style.transform = 'rotateY(90deg)';
+        // }
+    </script>
+</body>
 
-    <!-- <script>
-        let path = document.querySelector('path');
-
-        path_d_change(path, [0.08, 0.08]);
-
-        function path_d_change(path, arr) {
-            let stop = false;
-            let resolve_path_d = (d, direct_arr) => {
-                let pattern = /Q([\d\.]+),([\d\.]+)/;
-                let reg_arr = d.match(pattern);
-                let [, x, y] = reg_arr;
-                x = direct_arr[0] + parseFloat(x);
-                y = direct_arr[1] + parseFloat(y);
-                if (y > 80) stop = true;
-                return d.replace(pattern, 'Q' + x + ',' + y);
-            }
-            let change_path_d = () => {
-                let d = resolve_path_d(path.getAttribute('d'), arr);
-                path.setAttribute('d', d);
-                if (!stop) {
-                    requestAnimationFrame(change_path_d);
-                }
-            };
-            change_path_d();
-        }
-    </script> -->
+</html>cript>
 </body>
 
 </html>
