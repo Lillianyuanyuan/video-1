@@ -97,8 +97,51 @@ nav :last-child::after {
 
 /*section*/
 
-section {
-    margin: 14vh;
+.container {
+    position: absolute;
+    top: 20vh;
+    z-index: -1;
+    margin: 28vh auto;
+    width: 100%;
+    height: 26vw;
+
+    perspective: 2000px;
+}
+
+.container .stage {
+    position: relative;
+    margin: auto;
+    width: 26vw;
+    height: 100%;
+    transition: all 1s linear;
+
+    transform-style: preserve-3d;
+}
+
+.container .page {
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+
+.container .page:nth-child(1) {
+    background-color: yellowgreen;
+    transform: translateZ(13vw);
+}
+
+.container .page:nth-child(2) {
+    background-color: yellow;
+    transform: translateX(13VW) rotateY(90deg);
+}
+
+.container .page:nth-child(3) {
+    background-color: green;
+    transform: translateX(-13VW) rotateY(-90deg);
+}
+
+.container .page:nth-child(4) {
+    background-color: blue;
+    transform: translateZ(-13VW);
 }
 
 
@@ -160,10 +203,16 @@ section {
     .list>li {
         padding: 3vh;
         border-bottom: 2px solid rgba(255, 200, 2, 0.7);
+        border-top-left-radius: 20vw;
+        border-top-right-radius: 20vw;
+    }
+    .list>li:hover {
+        background-color: rgba(73, 140, 175, 0.8);
     }
     .list>li:last-child {
         padding: 0;
         border: none;
+        background-color: none;
     }
     .list>li>svg {
         display: block;
@@ -176,6 +225,8 @@ section {
         transition: all 1.5s linear;
     }
     .transformleft {
-        transform: translatex(100vw);
+        transform: rotateX(90deg);
     }
 }
+
+@media sreen and (min-width:1025px) {}
