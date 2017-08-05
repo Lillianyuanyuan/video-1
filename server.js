@@ -3,8 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const Koa = require('koa');
 const { port, uploadDir } = require('./config');
-// const koabody = require('koa-body');
-// const formidable = require('formidable');
+const koabody = require('koa-body');
 const router = require('koa-router')();
 const app = new Koa();
 
@@ -19,13 +18,13 @@ function main() {
                         const { pathName, get, post } = require(p);
                         //注册路由
                         post ? router.post(pathName,
-                            // koabody({
-                            //     multipart: true,
-                            //     formidable: {
-                            //         encoding: 'utf-8',
-                            //         uploadDir: 'static/'
-                            //     }
-                            // }),
+                            koabody({
+                                multipart: true,
+                                formidable: {
+                                    encoding: 'utf-8',
+                                    uploadDir,
+                                }
+                            }),
                             post) : void(0);
                         get ? router.get(pathName, get) : void(0);
                     }
