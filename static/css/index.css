@@ -60,7 +60,11 @@ header {
     font-weight: blod;
 }
 
-.title>div {
+.title {
+    position: relative;
+}
+
+.title .fixed {
     position: absolute;
     top: 0;
     right: 0;

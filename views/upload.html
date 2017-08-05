@@ -20,7 +20,7 @@
     </header>
     <script>
         (() => {
-            let file = document.querySelector('#file');
+            let input = document.querySelector('#file');
             file.addEventListener('change', function() {
                 console.log(this.files[0], this.files[0].name);
             });
@@ -37,25 +37,29 @@
                 }
             });
             button.addEventListener('click', () => {
-                if (!file.files[0]) {
+                if (!input.files[0]) {
                     return void alert('选择文件');
                 }
-                let timer = setTimeout(function() {
-                    let xhr = new XMLHttpRequest();
-                    let formdata = new FormData();
-                    formdata.append(file.files[0], name, file.files[0]);
-                    xhr.open('post', '/upload', true);
-                    xhr.upload.onloadstart = () => {
-                        window.onbeforeunload = (e) => {
-                            return void alert('loading');
-                        }
+                let formdata = new FormData();
+                formdata.append(input.files[0].name, input.files[0]);
+                let xhr = new XMLHttpRequest();
+                xhr.open('post', '/upload/file', true);
+                // xhr.onload = function() {
+                //     if (xhr.readyState === 4 && xhr.status === 200) {
+                //         console.log(xhr.responseText);
+                //     }
+                // }
+                xhr.upload.onloadstart = () => {
+                    window.onbeforeunload = (e) => {
+                        return void alert('uploading');
                     }
-                    xhr.upload.onprogress = (e) => {
-                        console.log(e.loaded, e.total);
-                        percent.num = e.loaded / e.total;
+                }
+                xhr.upload.onprogress = (e) => {
+                        e = e || window.event;
+                        let percent = e.loaded / e.total;
                     }
-                    xhr.send(formdata);
-                }, 200);
+                    //  xhr.setRequestHeader('content-type', "multipart/form-data");
+                xhr.send(formdata);
             })
         })()
     </script>

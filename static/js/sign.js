@@ -17,7 +17,9 @@
                     method: 'post',
                     body: formdata,
                     credentials: 'same-origin',
-                }).then(() => { window.location.reload() })
+                }).then(() => {
+                    window.location.reload();
+                })
             }
         } else {
             alert('请输入你的名字作为你的标识');

@@ -24,8 +24,6 @@ const func_post = async(ctx) => {
         expires,
     });
     ctx.redirect('/index.swnb');
-    // ctx.status = 301;
-    // ctx.set({ 'Location': '/index.swnb' });
 }
 
 module.exports = {

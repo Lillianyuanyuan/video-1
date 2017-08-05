@@ -18,9 +18,21 @@ const func_post = async(ctx) => {
     form.encoding = 'utf-8';
     form.maxFieldsSize = 2 * 1024 * 1024;
     form.keepExtensions = true; //保留后缀格式    
-    let d = require('./config').uploadDir;
-    console.log(d);
-    form.uploadDir = d;
+    form.uploadDir = require('../config').uploadDir;
+    let files = [],
+        fields = [];
+    form.on('field', (field, value) => {
+        console.log(field, value);
+        fields.push({ field, value });
+    });
+    form.on('file', (field, file) => {
+        console.log(field, file);
+        files.push({ field, file });
+    });
+    form.on('end', () => {
+        console.log('load file finish');
+        console.log(fields, files);
+    });
     form.parse(ctx.req);
     ctx.status = 204;
 }
