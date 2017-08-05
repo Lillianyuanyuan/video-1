@@ -1,0 +1,41 @@
+.container .stage {
+    display: flex;
+    /* position: relative; */
+    margin: auto;
+    /* width: 26vw; */
+    width: 100%;
+    height: 100%;
+    transition: all 1s linear;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* transform-style: preserve-3d; */
+}
+
+.container .page {
+    width: 50%;
+    height: 100%;
+    background-color: grey;
+    color: red;
+}
+
+.container .page:nth-child(1) {
+    background-color: yellowgreen;
+    transform: translateZ(13vw);
+}
+
+.container .page:nth-child(2) {
+    background-color: yellow;
+    transform: translateX(13VW) rotateY(90deg);
+}
+
+.container .page:nth-child(3) {
+    background-color: green;
+    transform: translateX(-13VW) rotateY(-90deg);
+}
+
+.container .page:nth-child(4) {
+    background-color: blue;
+    transform: translateZ(-13VW);
+}

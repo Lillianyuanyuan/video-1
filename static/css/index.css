@@ -61,8 +61,12 @@ header {
 }
 
 .title>div {
-    margin: calc((12vh - 6vw) / 2) auto;
-    width: 12vw;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 .title a {

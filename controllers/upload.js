@@ -3,6 +3,7 @@
  */
 const path = require('path');
 const fs = require('fs');
+const formidable = require('formidable');
 const func = async(ctx) => {
     let userName = '';
     ctx.cookies.get('username') ? (userName = ctx.cookies.get('username')) : (ctx.redirect('/sign.swnb'));
@@ -11,7 +12,21 @@ const func = async(ctx) => {
     const p = path.join(__dirname, '..', 'views/upload.html');
     ctx.body = fs.createReadStream(p, 'utf-8');
 };
+
+const func_post = async(ctx) => {
+    let form = new formidable.IncomingForm();
+    form.encoding = 'utf-8';
+    form.maxFieldsSize = 2 * 1024 * 1024;
+    form.keepExtensions = true; //保留后缀格式    
+    let d = require('./config').uploadDir;
+    console.log(d);
+    form.uploadDir = d;
+    form.parse(ctx.req);
+    ctx.status = 204;
+}
+
 module.exports = {
     pathName: '/upload',
     get: func,
+    post: func_post,
 }

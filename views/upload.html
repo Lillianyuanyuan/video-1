@@ -2,14 +2,63 @@
 <html lang="en">
 
 <head>
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/upload.css" rel="stylesheet" type='text/css'>
 </head>
 
 <body>
+    <header>
+        <aside></aside>
+        <section class="container">
+            <input type="file" id='file' name="upload">
+            <div class='button'>
 
+            </div>
+        </section>
+    </header>
+    <script>
+        (() => {
+            let file = document.querySelector('#file');
+            file.addEventListener('change', function() {
+                console.log(this.files[0], this.files[0].name);
+            });
+            let button = document.querySelector('.button');
+            let percent = {
+                num: 0
+            };
+            Object.defineProperty(percent, 'num', {
+                get() {
+                    return this._num;
+                },
+                set(val) {
+                    this._num = val;
+                }
+            });
+            button.addEventListener('click', () => {
+                if (!file.files[0]) {
+                    return void alert('选择文件');
+                }
+                let timer = setTimeout(function() {
+                    let xhr = new XMLHttpRequest();
+                    let formdata = new FormData();
+                    formdata.append(file.files[0], name, file.files[0]);
+                    xhr.open('post', '/upload', true);
+                    xhr.upload.onloadstart = () => {
+                        window.onbeforeunload = (e) => {
+                            return void alert('loading');
+                        }
+                    }
+                    xhr.upload.onprogress = (e) => {
+                        console.log(e.loaded, e.total);
+                        percent.num = e.loaded / e.total;
+                    }
+                    xhr.send(formdata);
+                }, 200);
+            })
+        })()
+    </script>
 </body>
 
 </html>

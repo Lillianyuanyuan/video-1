@@ -2,7 +2,15 @@
 const fs = require('fs');
 const path = require('path');
 const Koa = require('koa');
-const koabody = require('koa-body')({ multipart: true });
+const { port } = require('./config');
+// const koabody = require('koa-body')({
+//     multipart: true,
+//     formidable: {
+//         uploadDir: './',
+//         maxFieldsSize: 700 * 1024 * 1024,
+//         keepExtensions: true,
+//     }
+// });
 const router = require('koa-router')();
 const app = new Koa();
 
@@ -16,7 +24,7 @@ function main() {
                         console.log('router:', file);
                         const { pathName, get, post } = require(p);
                         //注册路由
-                        post ? router.post(pathName, koabody, post) : void(0);
+                        post ? router.post(pathName, post) : void(0);
                         get ? router.get(pathName, get) : void(0);
                     }
                 }
@@ -28,8 +36,6 @@ function main() {
             }
         });
     });
-
-    const { port } = require('./config');
     //路由注册完成后
     routerRigister.then((message) => {
         console.log(message);

@@ -5,12 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/index.css"> -->
+    <link rel="stylesheet" href="/static/css/test.css">
     <title>Document</title>
 </head>
 
 <body>
-    <h1>hhh</h1>
-    <canvas> buzhici</canvas>
+    <section>
+        <svg width="100%" height="12vh" preserveAspectRatio="none" viewBox='0,0,200,100'>
+        <path d="M20,20 L20,80 Q40,40 60,80 T100,80 T140,80 T180,80 L180,20" fill='blue' data-x='20' data-y='40' fill-width="5"/>
+        </svg>
+    </section>
+    </div>
+    <div class="stage">
+        <div class="page">upload file</div>
+        <div class="page">video play</div>
+        <div class="page">audio play</div>
+        <div class="page">chat room</div>
+    </div>
+    <button value='push'></button>
+    <script>
+        let path = document.querySelector('path');
+
+        path_d_change(path, [0.08, 0.08]);
+
+        let button = document.querySelector('button');
+
+        function path_d_change(path, arr) {
+            let stop = false;
+            let resolve_path_d = (d, direct_arr) => {
+                let pattern = /Q([\d\.]+),([\d\.]+)/;
+                let reg_arr = d.match(pattern);
+                let [, x, y] = reg_arr;
+                x = direct_arr[0] + parseFloat(x);
+                y = direct_arr[1] + parseFloat(y);
+                console.log(y);
+                if (y > 80) stop = true;
+                return d.replace(pattern, 'Q' + x + ',' + y);
+            }
+            let change_path_d = () => {
+                let d = resolve_path_d(path.getAttribute('d'), arr);
+                path.setAttribute('d', d);
+                if (!stop) {
+                    requestAnimationFrame(change_path_d);
+                }
+            };
+            change_path_d();
+        }
+    </script>
 </body>
 
 </html>
