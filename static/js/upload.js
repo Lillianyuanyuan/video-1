@@ -7,8 +7,7 @@
       button.addEventListener('click', () => {
           if (!input.files[0]) {
               return void alert('选择文件');
-          }
-
+          };
           let formdata = new FormData();
           formdata.append(input.files[0].name, input.files[0]);
           let xhr = new XMLHttpRequest();
