@@ -1,7 +1,12 @@
 (() => {
+
+    //锁住动画
     let lock = false;
+
+    //中央信道
     let message = [];
 
+    //开始终结状态
     function showUp(up) {
         if (up) {
             $('#close').s({ width: '100%' });
@@ -12,6 +17,7 @@
         }
     }
 
+    //svg出现
     function fadeIn() {
         let x = -50,
             y = -50;
@@ -42,6 +48,7 @@
         }, 1500);
     }
 
+    //svgo消失
     function fadeOut() {
         message = [];
         let x = 100,
@@ -68,6 +75,7 @@
         update();
     }
 
+    //打开
     $('#open').ev('click', function() {
         if (!lock) {
             lock = true;
@@ -78,6 +86,8 @@
             }, 1000);
         }
     });
+
+    //关闭
     $('#close').ev('click', function() {
         showUp(false);
         if (!lock) {
