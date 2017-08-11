@@ -6,14 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <link rel="stylesheet" type="text/css" href="/static/css/index.css"> -->
-    <link rel="stylesheet" href="/static/css/test.css">
+    <link rel="stylesheet" href="/static/css/upload.css">
+    <style>
+        body>div {
+            width: 100px;
+            height: 100px;
+            box-shadow: 3px 0 black, 6px 0 black;
+        }
+    </style>
     <title>Document</title>
 </head>
 
 <body>
-    <section>
+    <!-- <header>
+        <div id='open'></div>
+    </header>
+    <aside>
+        <div id='close'>
+            close
+        </div>
+        <section>
+            <div class='title' id='audio'>audio</div>
+            <ul class='list' id='audio_l'></ul>
+            <div class='title' id='video'>video</div>
+            <ul class='list' id='video_l'></ul>
+        </section>
+        <svg width="100%" height="100%" preserveAspectRatio="none" viewBox='0,0,100,100'>
+            <path d='M0,0 L0,100 Q-50,-50 100,0' fill='rgba(172, 223, 255,1)'/>
+        </svg>
+    </aside>
+    <script src='/static/js/upload.js'></script>
+    </script>
+    <script src='/static/js/test.js'></script> -->
+    <div></div>
+    <em>em </em><i>i </i><strong>strong </strong><b>b </b>
+</body>
+<!-- <body>
+     <section>
         <svg width="100%" height="12vh" preserveAspectRatio="none" viewBox='0,0,200,100'>
-        <path d="M20,20 L20,80 Q40,40 60,80 T100,80 T140,80 T180,80 L180,20" fill='blue' data-x='20' data-y='40' fill-width="5"/>
+            <path d="M20,20 L20,80 Q40,40 60,80 T100,80 T140,80 T180,80 L180,20" fill='blue' data-x='20' data-y='40' fill-width="5"/>
         </svg>
     </section>
     </div>
@@ -52,7 +83,18 @@
             };
             change_path_d();
         }
-    </script>
+    </script> 
+</body> -->
+
+<!-- <body>
+    <div style="background-color:yellow;width:100px;height:100px;"></div>
 </body>
+<script>
+    let div = document.querySelector('div');
+    document.body.onload = () => {
+        div.style.transition = 'all 5s linear';
+        div.style.transform = 'scale(0.2) rotate(180deg)'
+    }
+</script> -->
 
 </html>
