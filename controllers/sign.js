@@ -25,7 +25,7 @@ const func_post = async ctx => {
         expires,
         httpOnly: true
     });
-    ctx.cookies.set('id', Math.floor(Math.random() * config.maxUserNumber), {
+    ctx.cookies.set('id', name, {
         expires,
         httpOnly: true
     });

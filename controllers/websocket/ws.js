@@ -51,15 +51,21 @@ function _afterExit() {
 module.exports = function(server) {
     const wss = new websocket.Server({ server });
     wss.on('connection', (ws_clinet, request) => {
+        let cookies = {};
         if (request.headers.cookie) {
+            cookies = getCookies(request.headers.cookie);
+        } else {
             console.log('err websocket connect no cookies');
             return;
-        } else {
-            var cookies = getCookies(request.headers.cookie);
         }
-        console.log(`websokcet is connect from${cookies.id}`);
+        console.log(`websokcet is connect from ${cookies.id}`);
         ws_clinet.on('message', data => {
             _messageLine(message, cookies);
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    client.send(data);
+                }
+            });
         });
     });
     // _initMessageLine();
