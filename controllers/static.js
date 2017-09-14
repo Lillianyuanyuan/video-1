@@ -14,37 +14,46 @@ function encoding(code) {
         return 'gzip';
     } else if (/\bdeflate\b/.test(code)) {
         console.log('deflate :static.js 17');
-        return 'deflate'
+        return 'deflate';
     } else {
-        return ''
+        return '';
     }
 }
 
-const func = async(ctx) => {
+const func = async ctx => {
     let p = ctx.request.path;
     //安全处理路径
     p = path.normalize(p);
     p = path.join(__dirname, '../', p);
     //回调用promise来写
-    const promise = new Promise((resolve) => {
+    const promise = new Promise(resolve => {
         fs.stat(p, (err, stats) => {
             if (!err && stats.isFile()) {
-                console.log(p, ': static.js 37');
-                //获取更改时间
+                console.log(p, ': static.js 32');
+                //获取更改时间,这里是UTC时间
                 const lastModified = stats.mtime.toUTCString();
                 resolve(lastModified);
             } else {
                 if (err) console.log(err);
+                else console.log('not file');
                 resolve(false);
             }
         });
     });
 
     const flag = await promise;
+
     if (flag) {
-        if (ctx.headers['if-modified-since'] && ctx.headers['if-modified-since'] === flag) {
+        if (
+            ctx.headers['if-modified-since'] &&
+            ctx.headers['if-modified-since'] === flag
+        ) {
             ctx.status = 304;
-            console.log('if-modified-since', ctx.headers['if-modified-since'], 'static.js 47');
+            console.log(
+                'if-modified-since',
+                ctx.headers['if-modified-since'],
+                'static.js 47'
+            );
         } else {
             //设置压缩
             const contentType = mime.lookup(p);
@@ -54,24 +63,31 @@ const func = async(ctx) => {
             ctx.set({
                 'content-type': contentType,
                 'last-modified': flag
-            })
-            if (contentEncoding === 'gzip') {
-                ctx.set('content-encoding', contentEncoding);
-                ctx.response.body = fs.createReadStream(p, 'utf-8').pipe(zlib.createGzip());
-            } else if (contentEncoding === 'deflate') {
-                ctx.set('content-encoding', contentEncoding);
-                ctx.response.body = fs.createReadStream(p, 'utf-8').pipe(zlib.createDeflate());
-            } else {
-                ctx.response.body = fs.createReadStream(p, 'utf-8');
+            });
+            switch (contentEncoding) {
+                case 'gzip':
+                    ctx.set('content-encoding', contentEncoding);
+                    ctx.response.body = fs
+                        .createReadStream(p, 'utf-8')
+                        .pipe(zlib.createGzip());
+                    break;
+                case 'deflate':
+                    ctx.set('content-encoding', contentEncoding);
+                    ctx.response.body = fs
+                        .createReadStream(p, 'utf-8')
+                        .pipe(zlib.createDeflate());
+                    break;
+                default:
+                    ctx.response.body = fs.createReadStream(p, 'utf-8');
+                    break;
             }
         }
     } else {
         ctx.status = 404;
     }
-}
-
+};
 
 module.exports = {
     pathName: '/static/:type/:name',
-    get: func,
-}
+    get: func
+};

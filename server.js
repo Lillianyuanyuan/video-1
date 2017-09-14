@@ -8,7 +8,7 @@ const router = require('koa-router')();
 const app = new Koa();
 
 function main() {
-    const routerRigister = new Promise((resolve) => {
+    const routerRigister = new Promise(resolve => {
         fs.readdir('./controllers/', (err, files) => {
             if (!err) {
                 for (file of files) {
@@ -17,16 +17,20 @@ function main() {
                         console.log('router:', file);
                         const { pathName, get, post } = require(p);
                         //注册路由
-                        post ? router.post(pathName,
-                            koabody({
-                                multipart: true,
-                                formidable: {
-                                    encoding: 'utf-8',
-                                    uploadDir,
-                                }
-                            }),
-                            post) : void(0);
-                        get ? router.get(pathName, get) : void(0);
+                        post
+                            ? router.post(
+                                  pathName,
+                                  koabody({
+                                      multipart: true,
+                                      formidable: {
+                                          encoding: 'utf-8',
+                                          uploadDir
+                                      }
+                                  }),
+                                  post
+                              )
+                            : void 0;
+                        get ? router.get(pathName, get) : void 0;
                     }
                 }
                 //注册路由
@@ -38,9 +42,9 @@ function main() {
         });
     });
     //路由注册完成后
-    routerRigister.then((message) => {
+    routerRigister.then(message => {
         console.log(message);
-        app.use(async(ctx, next) => {
+        app.use(async (ctx, next) => {
             if (ctx.request.path === '/') {
                 ctx.redirect('/sign.swnb');
             } else {
@@ -49,7 +53,7 @@ function main() {
             await next();
         });
         app.listen(port);
-    })
-};
+    });
+}
 
 main();
