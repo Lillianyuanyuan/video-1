@@ -3,6 +3,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const config = require('../config');
 const func = async ctx => {
     const log = () => {
         ctx.status = 200;
@@ -21,7 +22,12 @@ const func_post = async ctx => {
     let expires = require(config).cookies_expires;
     expires = new Date(Date.now() + expires);
     ctx.cookies.set('username', name, {
-        expires
+        expires,
+        httpOnly: true
+    });
+    ctx.cookies.set('id', Math.floor(Math.random() * config.maxUserNumber), {
+        expires,
+        httpOnly: true
     });
     ctx.redirect('/index.swnb');
 };
