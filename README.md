@@ -24,11 +24,11 @@
 * linux用户
     
 
-    如果没有linux使用经验,建议仔细阅读[小白安装指导](./readme/linux.md)来配置环境,如果是linux熟练使用者,请直接阅读[简略安装指导](./readme/linuxS.md).
+    如果没有linux使用经验,建议仔细阅读[详细配置指导](./readme/linux.md)来配置环境,如果是linux熟练使用者,请直接阅读[简略配置指导](./readme/linuxS.md).
     
-    因为[linux小白安装指导](./readme/linux.md)写的非常详细.所以如果运行失败,建议仔细阅读小白的安装指导
+    因为[linux初级安装指导](./readme/linux.md)写的非常详细.所以如果运行失败,建议仔细阅读安装指导
 
-    [linux小白安装指导](./readme/linux.md)
+    [linux详细安装指导](./readme/linux.md)
 
     [linux简单安装指导](./readme/linuxS.md)
         

@@ -3,18 +3,23 @@
     sudo apt-get install nodejs
 
 [安装yarn](https://yarnpkg.com/en/docs/install)
+
 > 也可以使用npm,但是比较慢
 
-yarn 安装 n 来更新node版本
+yarn 安装 n (更新node版本)
 
     sudo yarn global install n&&sudo n stable
 
 下载项目
     
-    git clone 
+    git clone url
 
 进入目录执行
 
     cd video&&node server.js
+
+考虑到单线程的不稳定型，我写了一个多进程的运行脚本，如果需要考虑稳定异常退出，那么就请使用
+
+也可以使用`pm2`运行
 
 上面是安装的简化教程,如果不明白建议看[安装指导](./linux.md)来安装
