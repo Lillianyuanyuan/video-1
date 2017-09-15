@@ -19,15 +19,16 @@ async function _initMessageLine() {
 let data = [];
 //如果被锁是真的，过段时间再尝试，过程不会有逻辑错误导致信息消失
 let locked = false;
-function _messageLine(message, cookies) {
+function _messageLine(id, message) {
     if (locked) {
         return setTimeout(function() {
-            _messageLine(message, cookies);
+            _messageLine(id, message);
         }, 1);
     }
-    let info = {};
-    info[cookies.id] = message;
-    data.push(info);
+    data.push({
+        id,
+        message
+    });
     if (data.length >= 50) {
         locked = true;
         fs.appendFile(
@@ -50,7 +51,7 @@ function _afterExit() {
 
 module.exports = function(server) {
     const wss = new websocket.Server({ server });
-    wss.on('connection', (ws_clinet, request) => {
+    wss.on('connection', (ws_client, request) => {
         let cookies = {};
         if (request.headers.cookie) {
             cookies = getCookies(request.headers.cookie);
@@ -59,11 +60,48 @@ module.exports = function(server) {
             return;
         }
         console.log(`websokcet is connect from ${cookies.id}`);
-        ws_clinet.on('message', data => {
-            _messageLine(message, cookies);
-            wss.clients.forEach(function each(client) {
-                if (client !== ws && client.readyState === WebSocket.OPEN) {
-                    client.send(data);
+
+        //建立连接时
+        ws_client.on('open', () => {
+            let info = {
+                code: 2,
+                id: cookies.id
+            };
+            wss.clients.forEach(client => {
+                if (client.readyState === websocket.OPEN) {
+                    client.send(JSON.stringify(info));
+                }
+            });
+        });
+
+        //传入数据时
+        ws_client.on('message', message => {
+            let info = {
+                code: 3,
+                id: cookies.id,
+                message
+            };
+            wss.clients.forEach(client => {
+                if (client.readyState === websocket.OPEN) {
+                    client.send(JSON.stringify(info));
+                }
+            });
+            _messageLine(info.id, message);
+        });
+
+        //断开连接时
+        ws_client.on('close', () => {
+            let info = {
+                code: 4,
+                id: cookies.id
+            };
+            console.log(`websokcet is closing from ${cookies.id}`);
+            wss.clients.forEach(client => {
+                if (
+                    client !== ws_client &&
+                    client.readyState === websocket.OPEN
+                ) {
+                    client.send(jSON.stringify(info));
                 }
             });
         });
