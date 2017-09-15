@@ -101,7 +101,7 @@ module.exports = function(server) {
                     client !== ws_client &&
                     client.readyState === websocket.OPEN
                 ) {
-                    client.send(jSON.stringify(info));
+                    client.send(JSON.stringify(info));
                 }
             });
         });
