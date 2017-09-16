@@ -10,12 +10,17 @@ const app = new Koa();
 
 async function main() {
     const message = await new Promise(resolve => {
-        fs.readdir('./controllers/', (err, files) => {
+        fs.readdir('./controllers/routers', (err, files) => {
             if (!err) {
                 for (let file of files) {
                     //确认是js文件
                     if (file.endsWith('.js')) {
-                        const p = path.join(__dirname, 'controllers', file);
+                        const p = path.join(
+                            __dirname,
+                            'controllers',
+                            'routers',
+                            file
+                        );
                         console.log('router:', file);
                         //获取文件和方法
                         const { pathName, get, post } = require(p);
@@ -36,6 +41,7 @@ async function main() {
                         get ? router.get(pathName, get) : void 0;
                     }
                 }
+
                 //注册路由
                 app.use(router.routes());
                 resolve('router register finish');
@@ -45,8 +51,10 @@ async function main() {
             }
         });
     });
+
     //路由注册完成后
     console.log(message);
+
     //处理错误的路由
     app.use(async (ctx, next) => {
         if (ctx.request.path === '/') {
@@ -56,8 +64,10 @@ async function main() {
         }
         await next();
     });
+
     // 获取server
     const server = app.listen(port);
+
     //交给ws使用，开启websocket
     websocket(server);
 }

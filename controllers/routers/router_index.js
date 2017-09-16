@@ -5,7 +5,7 @@ const func = async ctx => {
     if (name) {
         ctx.status = 200;
         ctx.type = 'text/html;charset=utf-8';
-        const p = path.join(__dirname, '..', '/views/index.html');
+        const p = path.join(__dirname, '..', '..', '/views/index.html');
         ctx.body = fs.createReadStream(p, 'utf-8');
     } else {
         console.log('no cookies match username index.js 11');

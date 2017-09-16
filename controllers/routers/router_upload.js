@@ -3,8 +3,8 @@
  */
 const path = require('path');
 const fs = require('fs');
-const { uploadDir } = require('../config');
-const formVar = require('../api.js/formVar');
+const { uploadDir } = require('../../config');
+const formVar = require('../../api.js/formVar');
 
 const func = async ctx => {
     let userName = '';
@@ -13,7 +13,7 @@ const func = async ctx => {
         : ctx.redirect('/sign.swnb');
     ctx.status = 200;
     ctx.type = 'text/html;charset=utf-8';
-    const p = path.join(__dirname, '..', 'views/upload.html');
+    const p = path.join(__dirname, '..', '..', 'views/upload.html');
     ctx.body = fs.createReadStream(p, 'utf-8');
 };
 
