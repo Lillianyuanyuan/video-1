@@ -2,7 +2,7 @@
     一个webscoket模块
 */
 const websocket = require('ws');
-const getCookies = require('../../api.js/getCookies');
+const getCookies = require('../../shim/getCookies');
 
 const fs = require('fs');
 const util = require('util');
@@ -43,6 +43,8 @@ function _messageLine(id, message) {
         );
     }
 }
+
+//通过面向对象的方式进行重构
 
 //退出代码还没有确定，待写
 function _afterExit() {

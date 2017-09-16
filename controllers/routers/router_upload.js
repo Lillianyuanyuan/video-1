@@ -4,7 +4,7 @@
 const path = require('path');
 const fs = require('fs');
 const { uploadDir } = require('../../config');
-const formVar = require('../../api.js/formVar');
+const formVar = require('../../shim/formVar');
 
 const func = async ctx => {
     let userName = '';
@@ -43,6 +43,10 @@ const func_post = async ctx => {
     let files = ctx.request.body.files;
     console.log(files);
     Object.values(files).forEach(file => {
+        if (Array.isArray(file)) {
+            file = file[0];
+        }
+        console.log(file.path, typeof file.path);
         const hashname = path.basename(file.path);
         let filename = file.name;
         username = ctx.cookies.get('username');
