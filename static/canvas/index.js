@@ -1,30 +1,45 @@
 (() => {
     let can = document.getElementById('canvas');
+
     //定义长宽 解构
-    let [w, h] = [can.width, can.height] = [document.body.clientWidth, window.innerHeight];
+    let [w, h] = ([can.width, can.height] = [
+        document.body.clientWidth,
+        window.innerHeight
+    ]);
+
     let ctx = can.getContext('2d');
+
     //记录鼠标的位置;
     let position = {};
+
     //窗口事件
     window.addEventListener('resize', () => {
-        [w, h] = [can.width, can.height] = [document.body.clientWidth, window.innerHeight];
+        [w, h] = [can.width, can.height] = [
+            document.body.clientWidth,
+            window.innerHeight
+        ];
     });
+
     //注册移动事件
     document.addEventListener('mousemove', (e = window.event) => {
         position.x = e.clientX;
         position.y = e.clientY;
     });
+
     document.addEventListener('touchmove', (e = window.event) => {
         [position.x, position.y] = [e.touches[0].clientX, e.touches[0].clientY];
     });
 
-    can.addEventListener('touchmove', (e) => {
+    can.addEventListener('touchmove', e => {
         e.preventDefault();
     });
 
     //线条相连接
     function line(This) {
-        if ((Math.abs(position.x - This.x) < 200) && (Math.abs(position.y - This.y) < 200)) {
+        if (
+            Math.abs(position.x - This.x) < 200 &&
+            Math.abs(position.y - This.y) < 200
+        ) {
             ctx.beginPath();
             ctx.moveTo(position.x, position.y);
             if (This.name === 'rect') {
@@ -45,7 +60,6 @@
                 ctx.fillStyle = 'rgba(255,101,47,0.6)';
             }
         }
-
     }
 
     //这是一个元素的空间控制,让他好像在弹性盒子里面;
@@ -58,16 +72,17 @@
             // this.x = xtmp;
             this.vx *= -1;
         }
+
         if (this.y > h - 20 || this.y < 20) {
             let ytmp = Math.max(20, this.y);
             ytmp = Math.min(h - 20, ytmp);
             this.y = ytmp;
             this.vy *= -1;
         }
+
         this.x += this.vx * this.spead;
         this.y += this.vy * this.spead;
     }
-
 
     //矩形元素
     let rect = function() {};
@@ -141,8 +156,6 @@
         },
         update: dropUpdate
     };
-
-
 
     //元素集合数组
     let array = [];

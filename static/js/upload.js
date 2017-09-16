@@ -10,7 +10,7 @@ function $(str) {
     }
     let b = function() {
         this.obj = a;
-    }
+    };
     b.prototype = {
         ev(str, fn) {
             this.obj.addEventListener(str, fn);
@@ -26,13 +26,13 @@ function $(str) {
         setA(attr, value) {
             this.obj.setAttribute(attr, value);
         }
-    }
+    };
     return new b();
 }
+
 (() => {
     // let input = document.querySelector('#file');
     // file.addEventListener('change', function() {
-
     // });
     // let button = document.querySelector('.button');
     // button.addEventListener('click', () => {
@@ -58,29 +58,34 @@ function $(str) {
 
 (() => {
     $('#audio').ev('click', () => {
-        fetch('/media/audio').then((data) => data.json()).then((data) => {
-            let ul = document.createElement('ul');
-            for (let x in data) {
-                let name = x;
-                let li = document.createElement('li');
-                li.setAttribute('data-id', data[x].id);
-                li.innerText = name;
-                ul.appendChild(li);
-            }
-            $("#audio_l").html(ul);
-        });
+        fetch('/media/audio')
+            .then(data => data.json())
+            .then(data => {
+                let ul = document.createElement('ul');
+                for (let x in data) {
+                    let name = x;
+                    let li = document.createElement('li');
+                    li.setAttribute('data-id', data[x].id);
+                    li.innerText = name;
+                    ul.appendChild(li);
+                }
+                $('#audio_l').html(ul);
+            });
     });
     $('#video').ev('click', () => {
-        fetch('/media/video').then((data) => data.json()).then((data) => {
-            let ul = document.createElement('ul');
-            for (let x in data) {
-                let name = x;
-                let li = document.createElement('li');
-                li.setAttribute('data-id', data[x].id);
-                li.innerText = name;
-                ul.appendChild(li);
-            }
-            $("#video_l").html(ul);
-        });
+        fetch('/media/video')
+            .then(data => data.json())
+            .then(data => {
+                console.log(data);
+                let ul = document.createElement('ul');
+                for (let x in data) {
+                    let name = x;
+                    let li = document.createElement('li');
+                    li.setAttribute('data-id', data[x].id);
+                    li.innerText = name;
+                    ul.appendChild(li);
+                }
+                $('#video_l').html(ul);
+            });
     });
 })();

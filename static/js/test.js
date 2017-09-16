@@ -24,7 +24,10 @@
             } else {
                 y += 2;
             }
-            $('aside svg path').setA('d', 'M0,0 L0,100 Q' + x + ',' + y + ' 100,0');
+            $('aside svg path').setA(
+                'd',
+                'M0,0 L0,100 Q' + x + ',' + y + ' 100,0'
+            );
             if (!(y > 250)) {
                 raf = requestAnimationFrame(update);
             } else {
@@ -56,7 +59,10 @@
                 x -= 2;
                 y -= 2;
             }
-            $('aside svg path').setA('d', 'M0,0 L0,100 Q' + x + ',' + y + ' 100,0');
+            $('aside svg path').setA(
+                'd',
+                'M0,0 L0,100 Q' + x + ',' + y + ' 100,0'
+            );
             if (!(y < -20)) {
                 raf = requestAnimationFrame(update);
             } else {
@@ -78,6 +84,7 @@
             }, 1000);
         }
     });
+
     $('#close').ev('click', function() {
         showUp(false);
         if (!lock) {
@@ -89,7 +96,6 @@
                     fadeOut();
                 }
             });
-        };
-
-    })
-})()
+        }
+    });
+})();
