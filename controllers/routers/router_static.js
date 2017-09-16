@@ -4,7 +4,7 @@
 const path = require('path');
 const fs = require('fs');
 const mime = require('mime');
-const { ETag } = require('../config');
+const { ETag } = require('../../config');
 const zlib = require('zlib');
 
 //确认压缩方式
@@ -24,7 +24,7 @@ const func = async ctx => {
     let p = ctx.request.path;
     //安全处理路径
     p = path.normalize(p);
-    p = path.join(__dirname, '../', p);
+    p = path.join(__dirname, '..', '..', p);
     //回调用promise来写
     const promise = new Promise(resolve => {
         fs.stat(p, (err, stats) => {

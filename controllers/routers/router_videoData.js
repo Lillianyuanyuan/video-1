@@ -14,7 +14,7 @@ const readir = path => {
 };
 
 const func = async ctx => {
-    const dir = path.join(__dirname, '..', 'static/mediaData');
+    const dir = path.join(__dirname, '..', '..', 'static/mediaData');
     //安全处理路径
     const p = path.join(dir, path.normalize(ctx.params.type));
     //读取文件夹里面的文件按
