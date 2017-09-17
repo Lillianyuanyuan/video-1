@@ -8,7 +8,7 @@
     "license": "MIT",
     "scripts": {
         "test": "node server.js",
-        "dev": "chomd +x -R ./* &&node server.js",
+        "dev": "chmod +x -R ./* &&node server.js",
         "start": "node server.js"
     },
     "dependencies": {
