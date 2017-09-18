@@ -61,19 +61,17 @@ module.exports = function(server) {
             console.log('err websocket connect no cookies');
             return;
         }
-        console.log(`websokcet is connect from ${cookies.id}`);
 
         //建立连接时
-        ws_client.on('open', () => {
-            let info = {
-                code: 2,
-                id: cookies.id
-            };
-            wss.clients.forEach(client => {
-                if (client.readyState === websocket.OPEN) {
-                    client.send(JSON.stringify(info));
-                }
-            });
+        let info = {
+            code: 2,
+            id: cookies.id
+        };
+        console.log(`websokcet is connect from ${cookies.id}`);
+        wss.clients.forEach(client => {
+            if (client.readyState === websocket.OPEN) {
+                client.send(JSON.stringify(info));
+            }
         });
 
         //传入数据时
@@ -84,8 +82,15 @@ module.exports = function(server) {
                 message
             };
             wss.clients.forEach(client => {
-                if (client.readyState === websocket.OPEN) {
+                if (
+                    client.readyState === websocket.OPEN &&
+                    client !== ws_client
+                ) {
                     client.send(JSON.stringify(info));
+                } else {
+                    let tmp = JSON.parse(JSON.stringify(info));
+                    tmp.code = 1;
+                    client.send(JSON.stringify(tmp));
                 }
             });
             _messageLine(info.id, message);

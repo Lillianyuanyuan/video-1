@@ -6,6 +6,6 @@
 
 当一个ws连接上，那么ws就会广播一个对象`{code:2:id:id}`
 
-当有数据传入，ws广播一个对象`{code:3,id:id}`
+当有数据传入，ws广播一个对象`{code:3,id:id,message}`,如果数据来自自己，那么就`{code:1,id:id,message}`
 
  所有的数据都会被装在一个对象的`data`属性内
