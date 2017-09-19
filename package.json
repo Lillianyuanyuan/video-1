@@ -7,9 +7,9 @@
     "author": "swnb <1786718956@qq.com>",
     "license": "MIT",
     "scripts": {
-        "test": "node server.js",
-        "dev": "chmod +x -R ./* &&node server.js",
-        "start": "node server.js"
+        "cluster": "node server.cluster.js",
+        "dev": "chmod +x -R ./* && node server.js",
+        "start": "chmod +x -R ./* && node server.js"
     },
     "dependencies": {
         "koa": "^2.3.0",
