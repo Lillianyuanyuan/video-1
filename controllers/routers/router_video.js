@@ -54,6 +54,7 @@ const func = async ctx => {
                 'content-Range',
                 `bytes ${range.start}-${range.end}/${stat.size}`
             );
+            ctx.status = 206;
             ctx.body = fs.createReadStream(p, {
                 start: range.start,
                 end: range.end
