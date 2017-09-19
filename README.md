@@ -1,13 +1,13 @@
 # video
 ### 一个基于node的流媒体项目，可以上传视频或者音频文件，附带一个websocket的聊天室，响应布局；
 
- ![sign page 效果](./readme/swnb_index.png)
+ ![sign page 效果](./readme/swnb_index.page.png)
 
 
- ![index page 效果](./readme/swnb_index1.png)
+ ![index page 效果](./readme/swnb_index1.page.png)
 
 
- ![function page 效果](./readme/swnb_index2.png)
+ ![function page 效果](./readme/swnb_index2.page.png)
 
  希望大家喜欢
 
