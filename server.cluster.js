@@ -12,11 +12,11 @@ if (cluster.isMaster) {
 
     // 捕获标准输出并将其打印到控制台
     server.stdout.on('data', data => {
-        console.log(data);
+        console.log(data.toString());
     });
 
     // 捕获标准错误输出并将其打印到控制台
     server.stderr.on('data', data => {
-        console.log('错误\n' + data);
+        console.log('错误\n' + data.toString());
     });
 }
