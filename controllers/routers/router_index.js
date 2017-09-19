@@ -1,9 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-<<<<<<< HEAD:controllers/routers/router_index.js
-
-=======
->>>>>>> 0372900bdfb2ccc205737b78cb1415b42c97fb05:controllers/routers/router_index.js
 const func = async ctx => {
     const name = ctx.cookies.get('username');
     if (name) {
