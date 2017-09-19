@@ -1,6 +1,14 @@
 # video
 ### 一个基于node的流媒体项目，可以上传视频或者音频文件，附带一个websocket的聊天室，响应布局；
 
+ ![sign page](./readme/swnb_1.mp4)
+
+
+ ![index page](./readme/swnb_2.mp4)
+
+
+ ![vue page](./readme/swnb_3.mp4)
+
 ## 这个项目面向对象：
 
 * 前端朋友，这个项目使用的前端技术比较广，vue,html5(媒体播放，canvas)，css3，svg动画，响应式页面，es6语法，node(koa2框架)；基于mvc架构，我也写了很多注释，所以维护或者更改是很方便的,可以自己扩展功能，我也会之后写新的东西；
