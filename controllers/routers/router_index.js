@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+
 const func = async ctx => {
     const name = ctx.cookies.get('username');
     if (name) {

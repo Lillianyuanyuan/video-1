@@ -56,7 +56,7 @@ const func = async ctx => {
             );
         } else {
             //设置压缩
-            const contentType = mime.lookup(p);
+            const contentType = mime.getType(p);
             const accEncode = ctx.headers['accept-encoding'];
             const contentEncoding = encoding(accEncode);
             ctx.response.status = 200;

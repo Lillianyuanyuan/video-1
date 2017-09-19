@@ -17,20 +17,23 @@ const func = async ctx => {
         let files = await readir(p);
         let data = {};
         let id = 1;
-        files.forEach(fileName => {
-            const name = fileName.split('_');
+        files.forEach(file => {
+            const fileTotalName = file;
+            file = /_/.test(file) ? file : '未知_' + file;
+            const name = file.split('_');
             const [user, filename] = [name[0], name[1]];
             data[filename] = {
                 id: id++,
                 user,
-                filename
+                filename,
+                fileTotalName
             };
         });
 
         /*      返回数据对象，作为数据的输出
      *      {id,user,filename}
      */
-
+        ctx.set('access-control-allow-origin', '*');
         ctx.body = JSON.stringify(data);
     } catch (e) {
         console.log(err);

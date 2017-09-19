@@ -14,6 +14,7 @@ canvas {
     z-index: -2;
 }
 
+
 /*header*/
 
 header {
@@ -28,6 +29,7 @@ header {
     height: 13vh;
     background: rgba(255, 255, 255, 0.3);
 }
+
 
 /*nav-bar*/
 
@@ -51,7 +53,7 @@ header {
     align-items: center;
 }
 
-.sign > a {
+.sign>a {
     color: rgb(64, 223, 250);
     text-align: center;
     font-weight: blod;
@@ -89,6 +91,7 @@ nav :last-child::after {
     content: '';
 }
 
+
 /*section*/
 
 .container {
@@ -97,6 +100,10 @@ nav :last-child::after {
     z-index: 0;
     width: 100%;
     height: 40vh;
+}
+
+.container svg {
+    opacity: 0.6;
 }
 
 .store {
@@ -131,6 +138,7 @@ nav :last-child::after {
     line-height: 14vh;
 }
 
+
 /*字体特效*/
 
 @keyframes backMove {
@@ -146,13 +154,7 @@ nav :last-child::after {
 }
 
 .backMove {
-    background: linear-gradient(
-        45deg,
-        #90d619 0%,
-        #f1b82d 25%,
-        #4ddee0 75%,
-        #a8d659 100%
-    );
+    background: linear-gradient( 45deg, #90d619 0%, #f1b82d 25%, #4ddee0 75%, #a8d659 100%);
     -webkit-background-clip: text;
     background-clip: text;
     background-size: 20% 100%;
@@ -170,7 +172,7 @@ nav :last-child::after {
         justify-content: flex-end;
         align-items: center;
     }
-    .icon > div {
+    .icon>div {
         display: flex;
         width: 12vw;
         height: 5vw;
@@ -178,7 +180,7 @@ nav :last-child::after {
         justify-content: center;
         align-content: space-between;
     }
-    .icon > div > span {
+    .icon>div>span {
         display: block;
         width: 70%;
         height: 20%;
@@ -190,25 +192,25 @@ nav :last-child::after {
         width: 100%;
         text-align: center;
     }
-    .list > li {
+    .list>li {
         padding: 3vh;
         border-bottom: 2px solid rgba(255, 200, 2, 0.7);
         border-top-left-radius: 20vw;
         border-top-right-radius: 20vw;
     }
-    .list > li:hover {
+    .list>li:hover {
         background-color: rgba(73, 140, 175, 0.8);
     }
-    .list > li:last-child {
+    .list>li:last-child {
         padding: 0;
         height: 100%;
         border: none;
         background-color: none;
     }
-    .list > li > svg {
+    .list>li>svg {
         display: block;
     }
-    .list > li > svg > path {
+    .list>li>svg>path {
         width: 100%;
     }
     /* animation */
