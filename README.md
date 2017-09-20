@@ -9,7 +9,9 @@
 
  ![function page 效果](./readme/swnb_index2.page.png)
 
- 希望大家喜欢
+ 上面是一部分页面，动画都是svg和canvas，希望
+
+希望大家喜欢
 
 ## 这个项目面向对象：
 
