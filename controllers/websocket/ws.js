@@ -87,12 +87,17 @@ module.exports = function(server) {
                     client !== ws_client
                 ) {
                     client.send(JSON.stringify(info));
-                } else {
+                }
+                if (
+                    client.readyState === websocket.OPEN &&
+                    client === ws_client
+                ) {
                     let tmp = JSON.parse(JSON.stringify(info));
                     tmp.code = 1;
                     client.send(JSON.stringify(tmp));
                 }
             });
+
             _messageLine(info.id, message);
         });
 

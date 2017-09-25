@@ -1,6 +1,6 @@
 {
     "name": "swnb_project",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "this is a video/audio player project base on node",
     "main": "server.js",
     "repository": "https://github.com/swnb/video.git",
@@ -16,6 +16,6 @@
         "koa-body": "^2.3.0",
         "koa-router": "^7.2.1",
         "mime": "^2.0.2",
-        "ws": "^3.1.0"
+        "ws": "^3.2.0"
     }
 }
