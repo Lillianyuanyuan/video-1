@@ -3,7 +3,7 @@ const { spawn } = require('child_process');
 if (cluster.isMaster) {
     cluster.fork();
     cluster.on('exit', (worker, code, signal) => {
-        cosole.log(`exit code => ${code}`);
+        console.log(`exit code => ${code}`);
         cluster.fork();
         console.log(`restart it `);
     });
